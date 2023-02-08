@@ -1,24 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import TaskList from './Components/TaskList';
+import React from 'react';
+
+// Ce composant devra prendre en entrée une liste de tâches sous forme de tableau et les afficher à l'aide d'une fonction map.
 
 function App() {
+  const [tasks] = React.useState([{
+    title: 'Faire les courses',
+    completed: false,
+}, {
+    title: 'Faire la vaisselle',
+    completed: false
+}])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {tasks.map((todo, index) => {
+        return <TaskList key={index} title={todo.title} completed={todo.completed} />;
+        // permet d'ajouter une tache a la liste
+
+
+
+      })}
     </div>
+
   );
 }
 
